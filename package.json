@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "test": "spago -x test.dhall test"
+  }
+}

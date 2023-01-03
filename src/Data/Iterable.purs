@@ -5,6 +5,7 @@ module Data.Iterable
   , drop
   , filter
   , fromArray
+  , fromString
   , pairwise
   , take
   , toArray
@@ -70,6 +71,9 @@ zip = zipWith Tuple
 
 fromArray :: forall a. Array a -> Iterable a
 fromArray = unsafeCoerce
+
+fromString :: String -> Iterable Char
+fromString = unsafeCoerce
 
 foreign import toArray :: forall a. Iterable a -> Array a
 

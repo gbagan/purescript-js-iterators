@@ -1,6 +1,6 @@
 { name = "iterators"
 , dependencies =
-  [ "lazy", "lists", "prelude", "tuples", "unsafe-coerce" ]
+  [ "lazy", "lists", "maybe", "prelude", "st", "tuples", "unsafe-coerce" ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs" ]
 , license = "MIT"

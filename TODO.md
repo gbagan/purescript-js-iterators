@@ -1,0 +1,6 @@
+- cycle
+- repeat
+- dropWhile
+- takeWhile
+- Data.ST.Iterator (forEach)
+- Data.IO.Iterator

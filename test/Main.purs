@@ -16,6 +16,7 @@ import Data.ST.Iterator as STI
 main :: Effect Unit
 main = launchAff_ $ runSpec [consoleReporter] do
   let a = I.fromArray [1, 2, 3, 4, 5]
+  let b = I.fromArray [6, 7]
   let s = I.fromString "hello"
   describe "Data.Iterable" do
     it "fromArray >>> toArray == id" do
@@ -28,6 +29,10 @@ main = launchAff_ $ runSpec [consoleReporter] do
       I.toArray (pure 2) `shouldEqual` [2]
     it ">>=" do
       I.toArray (a >>= \n -> I.fromArray [n*2, n*3]) `shouldEqual` [2, 3, 4, 6, 6, 9, 8, 12, 10, 15]
+    it "<>" do
+      I.toArray (a <> b) `shouldEqual` [1, 2, 3, 4, 5, 6, 7] 
+    it "mempty" do
+      I.toArray mempty `shouldEqual` ([] :: Array Int)
     it "filter" do
       I.toArray (I.filter odd a) `shouldEqual` [1, 3, 5]
     it "drop" do

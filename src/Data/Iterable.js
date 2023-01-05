@@ -38,6 +38,29 @@ export const filter = f => xs => ({
     }
 })
 
+export const empty = ({
+    [Symbol.iterator]() {
+        return {
+            next() {
+                return {done: true, value: undefined}
+            }
+        }
+    }
+})
+
+export const itappend = xs => ys => ({
+    [Symbol.iterator]() {
+        const it1 = xs[Symbol.iterator]()
+        const it2 = ys[Symbol.iterator]()
+        return {
+            next() {
+                const v = it1.next()
+                return v.done ? it2.next() : v
+            }
+        }
+    }
+})
+
 export const singleton = function*(x) {
     yield x;
 }
@@ -97,7 +120,7 @@ export const take = n => xs => ({
                     if (o.done)
                         return o
                     if (m > 0) {
-                        m--;
+                        m--
                         return o
                     }
                     return {done: true, value: undefined}

@@ -3,6 +3,7 @@ module Data.Iterable
   , count
   , count'
   , drop
+  , empty
   , filter
   , fromArray
   , fromString
@@ -37,6 +38,12 @@ instance Applicative Iterable where
 
 instance Monad Iterable
 
+instance Semigroup (Iterable a) where
+  append = itappend
+
+instance Monoid (Iterable a) where
+  mempty = empty
+
 foreign import countImpl :: Int -> Int -> Iterable Int
 
 count :: Int -> Iterable Int
@@ -50,7 +57,9 @@ foreign import itmap :: forall a b. (a -> b) -> Iterable a -> Iterable b
 foreign import concatMap :: forall a b. (a -> Iterable b) -> Iterable a -> Iterable b
 foreign import singleton :: forall a. a -> Iterable a
 
+foreign import empty :: forall a. Iterable a
 
+foreign import itappend :: forall a. Iterable a -> Iterable a -> Iterable a
 
 foreign import filter :: forall a. (a -> Boolean) -> Iterable a -> Iterable a
 

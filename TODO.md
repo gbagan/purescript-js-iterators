@@ -1,0 +1,8 @@
+- instance Foldable for Iterable
+- maximum, minimum, all, any
+- cycle
+- repeat
+- dropWhile
+- takeWhile
+- Data.ST.Iterator.forEach
+- Data.IO.Iterator

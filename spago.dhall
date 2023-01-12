@@ -1,8 +1,8 @@
-{ name = "iterators"
+{ name = "iterables"
 , dependencies =
-  [ "lazy", "lists", "maybe", "prelude", "st", "tuples", "unsafe-coerce" ]
+  [ "foldable-traversable", "lazy", "lists", "maybe", "prelude", "st", "tuples", "unsafe-coerce" ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs" ]
 , license = "MIT"
-, repository = "https://github.com/gbagan/purescript-iterators.git"
+, repository = "https://github.com/gbagan/purescript-iterables.git"
 }

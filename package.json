@@ -1,5 +1,8 @@
 {
   "scripts": {
     "test": "spago -x test.dhall test"
+  },
+  "dependencies": {
+    "spago": "^0.20.9"
   }
 }

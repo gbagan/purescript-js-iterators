@@ -7,6 +7,7 @@ import Test.Spec (describe, it)
 import Test.Spec.Assertions (shouldEqual)
 import Test.Spec.Reporter.Console (consoleReporter)
 import Test.Spec.Runner (runSpec)
+import Data.Foldable (foldl)
 import Data.Int (odd)
 import Data.Maybe (Maybe(..))
 import Control.Monad.ST as ST
@@ -33,6 +34,8 @@ main = launchAff_ $ runSpec [consoleReporter] do
       I.toArray (a <> b) `shouldEqual` [1, 2, 3, 4, 5, 6, 7] 
     it "mempty" do
       I.toArray mempty `shouldEqual` ([] :: Array Int)
+    it "foldl" do
+      foldl (\acc x -> acc <> show x) "" a `shouldEqual` "12345"
     it "filter" do
       I.toArray (I.filter odd a) `shouldEqual` [1, 3, 5]
     it "drop" do

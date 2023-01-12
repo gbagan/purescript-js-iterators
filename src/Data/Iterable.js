@@ -10,7 +10,7 @@ export const countImpl = start => step => ({
     }
 })
 
-export const itmap = f => xs => ({
+export const mapImpl = f => xs => ({
     [Symbol.iterator]() {
         const it = xs[Symbol.iterator]()
         return {
@@ -48,7 +48,7 @@ export const empty = ({
     }
 })
 
-export const itappend = xs => ys => ({
+export const appendImpl = xs => ys => ({
     [Symbol.iterator]() {
         const it1 = xs[Symbol.iterator]()
         const it2 = ys[Symbol.iterator]()
@@ -60,6 +60,14 @@ export const itappend = xs => ys => ({
         }
     }
 })
+
+export const foldlImpl = f => a => xs => {
+    let acc = a
+    for (const x of xs) {
+        acc = f(acc)(x)
+    }
+    return acc
+}
 
 export const singleton = function*(x) {
     yield x;
@@ -129,6 +137,24 @@ export const take = n => xs => ({
         }
     }
 })
+
+export const all = f => xs => {
+    for (const x in xs) {
+        if (!f(x)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+export const any = f => xs => {
+    for (const x in xs) {
+        if (f(x)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 export const pairwiseImpl = tuple => xs => ({
     [Symbol.iterator]() {

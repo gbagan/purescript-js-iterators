@@ -1,6 +1,5 @@
 module Data.ST.Iterator where
 
-import Prelude
 import Control.Monad.ST (ST, Region)
 import Data.Iterable (Iterable)
 import Data.Maybe (Maybe(..))

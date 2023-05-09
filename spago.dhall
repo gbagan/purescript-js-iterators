@@ -1,4 +1,4 @@
-{ name = "iterables"
+{ name = "js-iterators"
 , dependencies =
   [ "foldable-traversable"
   , "functions"

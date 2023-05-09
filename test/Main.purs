@@ -11,8 +11,8 @@ import Data.Foldable (foldl)
 import Data.Int (odd)
 import Data.Maybe (Maybe(..))
 import Control.Monad.ST as ST
-import Data.Iterable as I
-import Data.ST.Iterator as STI
+import JS.Iterable as I
+import JS.Iterator.ST as STI
 
 main :: Effect Unit
 main = launchAff_ $ runSpec [consoleReporter] do

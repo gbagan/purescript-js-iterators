@@ -1,4 +1,4 @@
-module Data.Iterable
+module JS.Iterable
   ( Iterable
   , count
   , count'
@@ -20,6 +20,7 @@ module Data.Iterable
 
 import Prelude
 import Data.Foldable (class Foldable, foldr, foldMapDefaultL)
+import Data.Function.Uncurried (Fn4, runFn4)
 import Data.Tuple (Tuple(..))
 import Data.List.Lazy.Types (List, Step(..))
 import Data.Lazy (Lazy, defer)
@@ -101,11 +102,12 @@ fromString = unsafeCoerce
 foreign import toArray :: forall a. Iterable a -> Array a
 
 toLazyList :: forall a. Iterable a -> List a
-toLazyList = toLazyListImpl defer Nil Cons
+toLazyList it = runFn4 toLazyListImpl it defer Nil Cons
 
-foreign import toLazyListImpl ::
-  forall b.
-  (forall a. (Unit -> a) -> Lazy a) ->
-  (forall a. Step a) ->
-  (forall a. a -> List a -> Step a) ->
-  Iterable b -> List b
+foreign import toLazyListImpl :: forall b.
+  Fn4
+    (Iterable b)
+    (forall a. (Unit -> a) -> Lazy a)
+    (forall a. Step a)
+    (forall a. a -> List a -> Step a)
+    (List b)

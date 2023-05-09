@@ -196,14 +196,11 @@ export const zipWith = f => xs => ys => ({
 
 export const toArray = xs => [...xs]
 
-export const toLazyListImpl = defer => nil => cons => xs => {
-    const it = xs[Symbol.iterator]()
-    const defered = () => defer(() => {
-        const { value, done } = it.next()
-        if (done)
-            return nil
-        else
-            return cons(value)(defered())
-    })
-    return defered()
+export const toLazyListImpl = (xs, defer, nil, cons) => {
+  const it = xs[Symbol.iterator]()
+  const defered = () => defer(() => {
+    const { value, done } = it.next()
+    return done ? nil : cons(value)(defered())
+  })
+  return defered()
 }

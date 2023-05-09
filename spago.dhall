@@ -1,6 +1,15 @@
 { name = "iterables"
 , dependencies =
-  [ "foldable-traversable", "lazy", "lists", "maybe", "prelude", "st", "tuples", "unsafe-coerce" ]
+  [ "foldable-traversable"
+  , "functions"
+  , "lazy"
+  , "lists"
+  , "maybe"
+  , "prelude"
+  , "st"
+  , "tuples"
+  , "unsafe-coerce"
+  ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs" ]
 , license = "MIT"

@@ -1,4 +1,4 @@
-module JS.Iterator.ST where
+module JS.Iterator.ST (Iterator, iterator, next) where
 
 import Control.Monad.ST (ST, Region)
 import Control.Monad.ST.Uncurried (STFn3, runSTFn3)
@@ -6,6 +6,8 @@ import JS.Iterable (Iterable)
 import Data.Maybe (Maybe(..))
 
 foreign import data Iterator :: Region -> Type -> Type
+
+type role Iterator nominal representational
 
 foreign import iterator :: forall r a. Iterable a -> ST r (Iterator r a)
 

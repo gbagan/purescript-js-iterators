@@ -28,6 +28,9 @@ import Unsafe.Coerce (unsafeCoerce)
 
 foreign import data Iterable :: Type -> Type
 
+type role Iterable representational
+
+
 instance Functor Iterable where
   map = mapImpl
 

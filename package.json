@@ -3,6 +3,7 @@
     "test": "spago -x test.dhall test"
   },
   "dependencies": {
+    "purescript": "^0.15.9",
     "spago": "^0.21.0"
   }
 }

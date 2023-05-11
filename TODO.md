@@ -4,4 +4,3 @@
 - repeat
 - dropWhile
 - takeWhile
-- Data.Effect.Iterator

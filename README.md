@@ -52,12 +52,12 @@ import Control.Monad.ST as ST
 import JS.Iterale as I
 import JS.Iterator.ST as STI
 
-a :: Int
+a :: Maybe Int
 a = ST.run (do
   it <- STI.iterator $ counter 10
   _ <- STI.next it
   _ <- STI.next it
   STI.next it
 )
--- a = 12
+-- a = Just 12
 ```

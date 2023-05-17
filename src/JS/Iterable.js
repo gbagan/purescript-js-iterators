@@ -124,7 +124,7 @@ export const take = n => xs => ({
     return {
       next() {
         for (;;) {
-          const o = it.next();
+          const o = it.next()
           if (o.done)
             return o
           if (m > 0) {

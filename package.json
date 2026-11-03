@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "test": "spago -x test.dhall test"
+    "test": "spago test"
   },
   "dependencies": {
     "purescript": "^0.15.9",
-    "spago": "^0.21.0"
+    "spago": "1.0.5"
   }
 }

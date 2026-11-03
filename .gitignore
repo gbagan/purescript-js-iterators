@@ -10,3 +10,4 @@
 /.psa*
 /.spago/
 .psc-ide-port
+/spago.lock
